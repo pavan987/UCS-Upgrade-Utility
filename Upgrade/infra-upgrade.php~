@@ -1,0 +1,54 @@
+<?php
+include 'session.php';
+?>
+
+<div class="content">
+<h1> Upgrade UCSM Infrastructure bundle </h1>
+<h2>( This upgrades infra bundle of registered testbed using autoinstall )</h2>
+<form action="#" method="POST" id="upgrade">
+
+<h2> Branch </h2>
+<select name="branch" id="branch">
+<option value="" selected="selected" >
+Select
+</option>
+<option value="nj_dev-builds">
+New_Jersey
+</option>
+<option value="elcapitan-builds" >
+Elcapitan
+</option>
+<option value="fletcher_cove-builds" >
+Fletcher_Cove
+</option>
+</select>
+
+<br>
+<br>
+
+<h2> Build </h2>
+<select name="build" id="build">
+</select>
+
+<br>
+<br>
+
+<input type="submit" value=" Upgrade " id="button" /> 
+</form>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+<script>
+
+$(document).ready(function(){
+$("#branch").change(function() {
+var value=$("#branch").val();
+$("#build").load("upgrade-query.php",{column:value});
+});
+
+$("#upgrade").on("submit",function(event){
+event.preventDefault();
+$('.mainpane').load('result.html'); });
+
+});
+</script>
+
